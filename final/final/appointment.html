@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Management - Appointments</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-color: #ff758c;
+            box-shadow: 0 0 5px rgba(255, 117, 140, 0.5);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📅 Appointment & Scheduling 🐾</h2>
+        <select id="appointmentType">
+            <option value="vet">Vet Appointment</option>
+            <option value="grooming">Grooming Session</option>
+            <option value="daycare">Pet Daycare / Pet Sitting</option>
+        </select>
+        <input type="date" id="appointmentDate" required>
+        <input type="time" id="appointmentTime" required>
+        <input type="text" id="contactEmail" placeholder="Email for Reminder" required>
+        <input type="text" id="contactPhone" placeholder="Phone Number for SMS" required>
+        <button onclick="bookAppointment()">Book Appointment</button>
+    </div>
+
+    <script>
+        function bookAppointment() {
+            const type = document.getElementById("appointmentType").value;
+            const date = document.getElementById("appointmentDate").value;
+            const time = document.getElementById("appointmentTime").value;
+            const email = document.getElementById("contactEmail").value;
+            const phone = document.getElementById("contactPhone").value;
+            
+            if (type && date && time && email && phone) {
+                alert(`✅ Appointment booked for ${type} on ${date} at ${time}. Reminder will be sent to ${email} and ${phone}.`);
+            } else {
+                alert("⚠️ Please fill in all fields to schedule an appointment.");
+            }
+        }
+    </script>
+</body>
+</html>

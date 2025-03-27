@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Management - Feeding & Medication Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-color: #ff758c;
+            box-shadow: 0 0 5px rgba(255, 117, 140, 0.5);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🍖 Feeding & Medication Tracker 💊</h2>
+        <h3>Feeding Schedule</h3>
+        <input type="time" id="feedingTime" required>
+        <input type="text" id="foodType" placeholder="Food Type" required>
+        <input type="text" id="feedingNotes" placeholder="Notes (optional)">
+        <button onclick="setFeedingReminder()">Set Feeding Reminder</button>
+        
+        <h3>Medication Schedule</h3>
+        <input type="text" id="medicationName" placeholder="Medication Name" required>
+        <input type="time" id="medicationTime" required>
+        <input type="text" id="dosage" placeholder="Dosage" required>
+        <button onclick="setMedicationReminder()">Set Medication Reminder</button>
+    </div>
+
+    <script>
+        function setFeedingReminder() {
+            const time = document.getElementById("feedingTime").value;
+            const food = document.getElementById("foodType").value;
+            const notes = document.getElementById("feedingNotes").value;
+            
+            if (time && food) {
+                alert(`🍖 Feeding reminder set for ${food} at ${time}. Notes: ${notes || "None"}`);
+            } else {
+                alert("⚠️ Please enter all required feeding details.");
+            }
+        }
+
+        function setMedicationReminder() {
+            const medName = document.getElementById("medicationName").value;
+            const medTime = document.getElementById("medicationTime").value;
+            const dosage = document.getElementById("dosage").value;
+            
+            if (medName && medTime && dosage) {
+                alert(`💊 Medication reminder set for ${medName} at ${medTime}, Dosage: ${dosage}`);
+            } else {
+                alert("⚠️ Please enter all required medication details.");
+            }
+        }
+    </script>
+</body>
+</html>
